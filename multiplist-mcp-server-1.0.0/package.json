@@ -1,0 +1,48 @@
+{
+  "name": "@multiplist/mcp-server",
+  "version": "1.0.0",
+  "description": "IP Vault with Citations — extract decisions, frameworks, and insights from AI conversations with full provenance.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "multiplist-mcp-server": "dist/index.js"
+  },
+  "license": "MIT",
+  "homepage": "https://multiplist.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/multiplist/mcp-server"
+  },
+  "author": "Multiplist",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "memory",
+    "knowledge-management",
+    "vault",
+    "claude",
+    "chatgpt",
+    "extraction",
+    "provenance",
+    "multiplist"
+  ],
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && chmod +x dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "zod": "^3.23.0",
+    "drizzle-orm": "^0.29.0",
+    "postgres": "^3.4.0",
+    "dotenv": "^16.0.0"
+  }
+}
