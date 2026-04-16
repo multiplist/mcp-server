@@ -12,7 +12,7 @@
   "homepage": "https://multiplist.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/multiplist/mcp-server.git""
+    "url": "git+https://github.com/multiplist/mcp-server.git"
   },
   "author": "Multiplist",
   "keywords": [
