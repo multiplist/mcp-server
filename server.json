@@ -1,0 +1,54 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.multiplist/mcp-server",
+  "title": "Multiplist",
+  "description": "Extract decisions, frameworks, and insights from AI conversations with citation-level provenance",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/multiplist/mcp-server",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@multiplist/mcp-server",
+      "version": "1.0.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://multiplist.ai/mcp"
+      }
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://multiplist.ai/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "OAuth 2.1 PKCE bearer token acquired via https://multiplist.ai/mcp/authorize",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "tagline": "IP Vault with Citations",
+      "homepage": "https://multiplist.ai",
+      "docs": "https://multiplist.ai/docs",
+      "tool_count": 19,
+      "tool_categories": [
+        "Capture",
+        "Extraction",
+        "Custom Skills",
+        "Discovery",
+        "Research",
+        "Annotate"
+      ]
+    }
+  }
+}
