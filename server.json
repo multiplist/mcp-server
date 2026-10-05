@@ -3,7 +3,7 @@
   "name": "ai.multiplist/mcp-server",
   "title": "Multiplist",
   "description": "Sovereign AI conversation vault and project brain. Automatically extracts decisions, frameworks, key passages, and insights with character-level provenance. Features continuous workspace coordination (Bento studios, decks, lanes, and cards) and local silicon integration.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://multiplist.ai",
   "repository": {
     "url": "https://github.com/multiplist/mcp-server",
@@ -14,7 +14,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@multiplist/mcp-server",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "runtimeHint": "npx",
       "transport": {
         "type": "stdio"
@@ -51,10 +51,6 @@
     "realm": {
       "price": "$149/mo",
       "toolCount": 5
-    },
-    "admin": {
-      "price": "Internal/Staff",
-      "toolCount": 4
     }
   },
   "capabilities": {
@@ -63,7 +59,7 @@
     "prompts": true,
     "logging": true
   },
-  "toolCount": 75,
+  "toolCount": 71,
   "tools": [
     {
       "name": "create_source",
@@ -419,26 +415,6 @@
       "name": "move_source_to_realm",
       "description": "[Realm] Transfer a source exclusively to a different Realm. Unclaims from source realm and claims into target realm.",
       "tier": "realm"
-    },
-    {
-      "name": "update_source_metadata",
-      "description": "[Admin] Update a source's metadata (title, author, tags, summary) without altering raw_content or breaking character spans. Note: container_id is strictly barred.",
-      "tier": "admin"
-    },
-    {
-      "name": "diagnose_source",
-      "description": "[Admin] Deep forensic diagnosis of a source: character count, seed distribution by category, provenance integrity, hash collision check, and extraction status.",
-      "tier": "admin"
-    },
-    {
-      "name": "prune_source_tree",
-      "description": "[Admin] Atomically prune a source and all its child seeds from the database. Requires explicit confirm: true.",
-      "tier": "admin"
-    },
-    {
-      "name": "query_database",
-      "description": "ADMIN-ONLY direct Postgres access for live diagnosis and fixes. Reads (SELECT/EXPLAIN/SHOW/WITH) run immediately inside a READ ONLY transaction and return rows. Writes (INSERT/UPDATE/DELETE/ALTER/CREATE/DROP) first return a DRY RUN preview — the affected row count, rolled back, nothing committed; call again with the IDENTICAL sql, confirm:true, and the confirm_token from the dry run to actually apply it. One statement per call; CONCURRENTLY is not supported. Gated by the DB_WRITE_TOOL_ENABLED env flag and the caller being the configured admin user. IMPORTANT: any schema change applied here MUST also be added to server/db-migrate.ts (idempotent IF NOT EXISTS) in the same session, or a fresh environment will silently lack it.",
-      "tier": "admin"
     }
   ],
   "_meta": {
@@ -446,7 +422,7 @@
       "tagline": "Sovereign AI Conversation Vault & Continuous Workspaces",
       "homepage": "https://multiplist.ai",
       "docs": "https://multiplist.ai/docs/mcp",
-      "tool_count": 75,
+      "tool_count": 71,
       "tool_categories": [
         "Capture",
         "Extraction",
@@ -462,9 +438,199 @@
         "Assets",
         "Agent Autonomy",
         "Production",
-        "Realms",
-        "Admin"
+        "Realms"
+      ],
+      "prompt_count": 18
+    }
+  },
+  "promptCount": 18,
+  "prompts": [
+    {
+      "name": "save-conversation",
+      "description": "Save this conversation to your vault. Multiplist extracts decisions, frameworks, and insights automatically — with full provenance."
+    },
+    {
+      "name": "show-seed-doc",
+      "description": "Pull a Seed Doc — your thinking organized into decisions, frameworks, golden passages, and more. The shareable artifact."
+    },
+    {
+      "name": "show-decisions",
+      "description": "Search your vault for decisions on a specific topic — pulled from all past conversations with exact citations.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic or question to search decisions for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-frameworks",
+      "description": "Surface the mental models and structured approaches you've developed across all conversations.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic or mental model to search frameworks for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-golden-passages",
+      "description": "Find your best insights — phrases and ideas worth keeping exactly as you said them.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic or phrase to surface memorable insights for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-definitions",
+      "description": "Find terms, concepts, and ideas you've defined or coined across your conversations.",
+      "arguments": [
+        {
+          "name": "term",
+          "description": "Term, concept, or phrase defined in past conversations (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-actions",
+      "description": "Find open action items, tasks, and commitments across all your saved conversations.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Project, client, or topic to find open action items for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-questions",
+      "description": "Surface unresolved questions and open loops from across your vault.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic to surface open loops and unresolved questions for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-offers",
+      "description": "Find opportunities, proposed next steps, and invitations from your conversations.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic or client domain to discover waiting action offers for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "show-emergence",
+      "description": "Discover patterns forming across your conversations — connections you might not have noticed.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic or domain to discover nascent patterns for (optional)",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "research-topic",
+      "description": "Synthesize across your entire vault on any topic. Produces a citable research document tracing how your thinking has evolved.",
+      "arguments": [
+        {
+          "name": "topic",
+          "description": "Topic to synthesize a citable research document for",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "browse-recent",
+      "description": "Browse everything saved in the last week — by date, type, or keyword.",
+      "arguments": [
+        {
+          "name": "timeframe",
+          "description": "Timeframe to browse (e.g. 'last week', 'last 24 hours')",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "vault-summary",
+      "description": "Get a complete overview of your vault — how many sources, what categories are covered, recent activity, and what's missing."
+    },
+    {
+      "name": "compose-workspace",
+      "description": "Talk a continuous workspace into being — creates Container, Studios, and Lanes for a project domain or client goal.",
+      "arguments": [
+        {
+          "name": "goal",
+          "description": "The project goal, client retainer, or domain to structure",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "desk-orientation",
+      "description": "Inspect desk state, resident agent, equipped tool bouquet, active cards, and pinned sources for a studio desk.",
+      "arguments": [
+        {
+          "name": "studio",
+          "description": "Name or ID of the studio desk to inspect",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "scaffold-runway",
+      "description": "Scaffold the canonical 5-Lane Agent Runway (Intake, Doing, Needs Context, Review, Shipped & Vaulted) for a studio deck.",
+      "arguments": [
+        {
+          "name": "studio",
+          "description": "Name or ID of the studio to scaffold the 5-lane agent runway for",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "add-marginalia",
+      "description": "Attach a correction, tension flag, evolution narrative, or commentary by a later mind to a vault source with scribe provenance.",
+      "arguments": [
+        {
+          "name": "source",
+          "description": "Title or ID of the source to annotate",
+          "required": true
+        },
+        {
+          "name": "note",
+          "description": "The commentary, tension flag, or insight to attach",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "query-local-model",
+      "description": "Execute private local inference directly on host Apple Silicon or local GPU via Ollama at $0.00 compute cost.",
+      "arguments": [
+        {
+          "name": "prompt",
+          "description": "The prompt or instruction to execute locally",
+          "required": true
+        },
+        {
+          "name": "model",
+          "description": "Local model name (optional, e.g. 'llama3.2', 'deepseek-r1')",
+          "required": false
+        }
       ]
     }
-  }
+  ]
 }

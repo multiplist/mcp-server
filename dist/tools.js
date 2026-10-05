@@ -1,7 +1,7 @@
 /**
- * Public MCP tool manifest — 75 canonical tools across 5 tiers.
+ * Public MCP tool manifest — 71 canonical tools across 4 tiers.
  *
- * Canonical manifest of tools exposed across Core, Plus, Pro, Realm, and Admin tiers.
+ * Canonical manifest of tools exposed across Core, Plus, Pro, and Realm tiers.
  * Full schemas + handlers live on the hosted server; this manifest is here for
  * directory listings, discovery cards, and client-side validation.
  */
@@ -12,7 +12,7 @@ export const PUBLIC_TOOLS = [
     { name: "delete_source", category: "capture", tier: "core", summary: "[Vault] Soft-delete a source. Seeds extracted from this source are NOT deleted — they retain provenance." },
     { name: "trigger_extraction", category: "extraction", tier: "core", summary: "[Vault] Run Neuron extraction on a source. Uses default 8-category extraction, or a specific skill for targeted extraction. When skillId is provided, the skill's instructions and schema govern what gets extracted." },
     { name: "get_source", category: "discovery", tier: "core", summary: "Open one known source by id or title and read everything in it — abstract, all seeds grouped by their 8 canonical categories and any skill-defined categories, and assets. Use this when you already have a specific source in mind. Not for searching — use search_vault to find seeds across the vault, or search_sources to locate which source you want first. By default the response includes raw content; for sources larger than ~100k characters the content is auto-omitted with omittedReason set, in which case re-request with explicit include: ['content'] if you really need it." },
-    { name: "search_vault", category: "discovery", tier: "core", summary: "Find seeds across your entire vault by semantic query. Use this when you want extracted meaning — decisions, frameworks, golden passages, or skill-defined categories like \"Product Moves\" — regardless of which source they came from. The category filter accepts the 8 canonical categories AND any skill-defined category name; it matches both the stored form (product_moves) and the human-readable form (Product Moves). Not for finding whole sources — use \search_sources\ for that, or \get_source\ to open one you already know." },
+    { name: "search_vault", category: "discovery", tier: "core", summary: "Find seeds across your entire vault by semantic query. Use this when you want extracted meaning — decisions, frameworks, golden passages, or skill-defined categories like \"Product Moves\" — regardless of which source they came from. The category filter accepts the 8 canonical categories AND any skill-defined category name; it matches both the stored form (product_moves) and the human-readable form (Product Moves). Not for finding whole sources — use 'search_sources' for that, or 'get_source' to open one you already know." },
     { name: "search_sources", category: "discovery", tier: "core", summary: "Find sources (whole conversations/documents) by title, date, type, or keyword — the card catalog of your vault. Use this when you want to locate documents, not the meaning inside them. Not for retrieving extracted seeds — use \search_vault\ to query seeds across sources, or \get_source\ once you know which source you want." },
     { name: "get_vault_summary", category: "discovery", tier: "core", summary: "Returns a high-level snapshot of the entire vault: source count, seed count, category distribution, recent sources, and topic clusters. Use at session start or when you need to understand the full knowledge landscape." },
     { name: "get_vault_gaps", category: "discovery", tier: "core", summary: "Analyze the vault's coverage — categories with low density, topics mentioned but unexplored, unextracted sources. Use this to decide what to explore next." },
@@ -78,15 +78,11 @@ export const PUBLIC_TOOLS = [
     { name: "switch_realm", category: "realm", tier: "realm", summary: "[Realm] Switch your active Realm operating context. Future vault reads and writes will operate in the target realm." },
     { name: "share_source_to_realm", category: "realm", tier: "realm", summary: "[Realm] Share an existing extracted source to another Realm ($0 re-extraction cost). Adds a realm pointer so all extracted seeds and provenance instantly appear in the target realm." },
     { name: "move_source_to_realm", category: "realm", tier: "realm", summary: "[Realm] Transfer a source exclusively to a different Realm. Unclaims from source realm and claims into target realm." },
-    { name: "update_source_metadata", category: "admin", tier: "admin", summary: "[Admin] Update a source's metadata (title, author, tags, summary) without altering raw_content or breaking character spans. Note: container_id is strictly barred." },
-    { name: "diagnose_source", category: "admin", tier: "admin", summary: "[Admin] Deep forensic diagnosis of a source: character count, seed distribution by category, provenance integrity, hash collision check, and extraction status." },
-    { name: "prune_source_tree", category: "admin", tier: "admin", summary: "[Admin] Atomically prune a source and all its child seeds from the database. Requires explicit confirm: true." },
-    { name: "query_database", category: "admin", tier: "admin", summary: "ADMIN-ONLY direct Postgres access for live diagnosis and fixes. Reads (SELECT/EXPLAIN/SHOW/WITH) run immediately inside a READ ONLY transaction and return rows. Writes (INSERT/UPDATE/DELETE/ALTER/CREATE/DROP) first return a DRY RUN preview — the affected row count, rolled back, nothing committed; call again with the IDENTICAL sql, confirm:true, and the confirm_token from the dry run to actually apply it. One statement per call; CONCURRENTLY is not supported. Gated by the DB_WRITE_TOOL_ENABLED env flag and the caller being the configured admin user. IMPORTANT: any schema change applied here MUST also be added to server/db-migrate.ts (idempotent IF NOT EXISTS) in the same session, or a fresh environment will silently lack it." },
 ];
 export const PUBLIC_TOOL_NAMES = PUBLIC_TOOLS.map((t) => t.name);
 export const PUBLIC_TOOL_COUNT = PUBLIC_TOOLS.length;
-// Zod-checked sanity guard — exactly 75 canonical tools.
+// Zod-checked sanity guard — exactly 71 canonical public tools.
 export const publicToolsSchema = z
     .array(z.object({ name: z.string(), category: z.string(), tier: z.string(), summary: z.string() }))
-    .length(75);
+    .length(71);
 publicToolsSchema.parse(PUBLIC_TOOLS);

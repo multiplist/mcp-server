@@ -1,13 +1,13 @@
 /**
- * Public MCP tool manifest — 75 canonical tools across 5 tiers.
+ * Public MCP tool manifest — 71 canonical tools across 4 tiers.
  *
- * Canonical manifest of tools exposed across Core, Plus, Pro, Realm, and Admin tiers.
+ * Canonical manifest of tools exposed across Core, Plus, Pro, and Realm tiers.
  * Full schemas + handlers live on the hosted server; this manifest is here for
  * directory listings, discovery cards, and client-side validation.
  */
 import { z } from "zod";
-export type ToolTier = "core" | "plus" | "pro" | "realm" | "admin";
-export type ToolCategory = "capture" | "extraction" | "skills" | "discovery" | "research" | "annotate" | "workspace" | "studios" | "cards" | "collections" | "local_silicon" | "assets" | "agent" | "production" | "realm" | "admin";
+export type ToolTier = "core" | "plus" | "pro" | "realm";
+export type ToolCategory = "capture" | "extraction" | "skills" | "discovery" | "research" | "annotate" | "workspace" | "studios" | "cards" | "collections" | "local_silicon" | "assets" | "agent" | "production" | "realm";
 export interface PublicTool {
     name: string;
     category: ToolCategory;

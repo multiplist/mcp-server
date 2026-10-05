@@ -68,6 +68,7 @@ export function buildServerCard(input) {
             name: p.name,
             category: p.category,
             description: p.description,
+            ...(p.arguments ? { arguments: [...p.arguments] } : {}),
         })),
         resources: RESOURCES,
         instructions,

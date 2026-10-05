@@ -54,7 +54,12 @@ export interface ServerCard {
     resourceCount: number;
   };
   tools: Array<{ name: string; category: string; description: string }>;
-  prompts: Array<{ name: string; category: string; description: string }>;
+  prompts: Array<{
+    name: string;
+    category: string;
+    description: string;
+    arguments?: Array<{ name: string; description: string; required?: boolean }>;
+  }>;
   resources: Array<{ uriTemplate: string; name: string; description: string }>;
   instructions: string;
   metadata: {
@@ -130,6 +135,7 @@ export function buildServerCard(input: ServerCardInput): ServerCard {
       name: p.name,
       category: p.category,
       description: p.description,
+      ...(p.arguments ? { arguments: [...p.arguments] } : {}),
     })),
     resources: RESOURCES,
     instructions,

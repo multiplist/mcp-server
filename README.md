@@ -62,7 +62,7 @@ For remote agents or clients supporting StreamableHTTP:
 
 ---
 
-## 🛠️ 75 Canonical Tools Across 5 Tiers
+## 🛠️ 71 Canonical Tools Across 4 Tiers
 
 Multiplist features progressive tool disclosure matching your provisioned workspace tier:
 
@@ -72,7 +72,6 @@ Multiplist features progressive tool disclosure matching your provisioned worksp
 | **Plus** | $19/mo | **48** | Bento workspaces, studios, decks, lanes, cards, folders, custom skills, marginalia |
 | **Pro** | $49/mo | **6** | Autonomous agent runways, desk state, autonomy audit logs, production deliverables |
 | **Realm** | $149/mo | **5** | Sovereign realm mesh, cross-realm sharing, domain isolation |
-| **Admin** | Internal | **4** | Diagnostic cluster, tree pruning, metadata repair, direct SQL triage |
 
 ### 🟢 Core Tools (12 Free / BYOK)
 - `create_source`: Save a conversation, document, or transcript to the vault with automatic extraction.
@@ -106,6 +105,33 @@ Multiplist features progressive tool disclosure matching your provisioned worksp
 
 ### 🌐 Realm Tools (5 Mesh Tools)
 - `list_realms`, `get_current_realm`, `switch_realm`, `share_source_to_realm`, `move_source_to_realm`: Sovereign domain isolation and zero-token cross-vault asset sharing.
+
+---
+
+## 💬 18 Interactive MCP Prompts
+
+Multiplist exports 18 interactive prompt templates with typed arguments for 1-click execution in Claude Desktop, Cursor, and any MCP host:
+
+| Category | Prompt | Arguments | Description |
+| :--- | :--- | :--- | :--- |
+| **Core Flow** | `/save-conversation` | — | Save current session to vault with automatic 8-category extraction |
+| | `/show-seed-doc` | — | Render full structured Seed Doc of current conversation |
+| **Extraction** | `/show-decisions` | `topic?` | Recall locked decisions with exact source provenance |
+| | `/show-frameworks` | `topic?` | Surface mental models and structured frameworks |
+| | `/show-golden-passages` | `topic?` | Find memorable verbatim insights and quotes |
+| | `/show-definitions` | `term?` | Recall defined terms and coinages across past sessions |
+| | `/show-actions` | `topic?` | Find open tasks, commitments, and follow-ups |
+| | `/show-questions` | `topic?` | Surface unresolved inquiries and open loops |
+| | `/show-offers` | `topic?` | Recall action opportunities and invitations |
+| | `/show-emergence` | `topic?` | Discover nascent patterns forming across topics |
+| **Research** | `/research-topic` | `topic` (req) | Synthesize a multi-source citable research document |
+| | `/browse-recent` | `timeframe?` | Browse recently saved sources by time horizon |
+| | `/vault-summary` | — | Full high-level overview of vault landscape & coverage |
+| **Workspaces** | `/compose-workspace` | `goal` (req) | Talk a complete container, studios, and lanes into being |
+| | `/desk-orientation` | `studio` (req) | Inspect desk state, resident agent, tool bouquet & active cards |
+| | `/scaffold-runway` | `studio` (req) | Scaffold canonical 5-lane agent runway for a studio |
+| **Marginalia** | `/add-marginalia` | `source`, `note` (req) | Attach commentary, corrections, or tension flags with scribe provenance |
+| **Local Silicon** | `/query-local-model` | `prompt` (req), `model?` | Run zero-cost local inference on Apple Silicon via Ollama |
 
 ---
 

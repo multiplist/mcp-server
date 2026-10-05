@@ -61,6 +61,11 @@ export interface ServerCard {
         name: string;
         category: string;
         description: string;
+        arguments?: Array<{
+            name: string;
+            description: string;
+            required?: boolean;
+        }>;
     }>;
     resources: Array<{
         uriTemplate: string;

@@ -91,10 +91,6 @@
     "get_current_realm",
     "switch_realm",
     "share_source_to_realm",
-    "move_source_to_realm",
-    "update_source_metadata",
-    "diagnose_source",
-    "prune_source_tree",
-    "query_database"
+    "move_source_to_realm"
   ]
 }
