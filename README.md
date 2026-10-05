@@ -1,102 +1,137 @@
 # @multiplist/mcp-server
 
-**IP Vault with Citations** — extract decisions, frameworks, and insights
-from your AI conversations with full provenance. Every claim traces back
-to exactly what you said.
+> **Sovereign AI Conversation Vault, 8-Category Epistemic Extraction & Continuous Workspaces**  
+> Connect Claude Desktop, Claude Code, Cursor, Antigravity IDE, and frontier LLMs directly to your private Multiplist brain.
 
-Your AI conversations are intellectual property. Multiplist treats them
-that way.
+[![npm version](https://img.shields.io/npm/v/@multiplist/mcp-server.svg)](https://www.npmjs.com/package/@multiplist/mcp-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![MCP Spec](https://img.shields.io/badge/MCP-2025--12--11-green.svg)](https://modelcontextprotocol.io)
 
-## Connect via MCP
+---
 
-Multiplist works as an MCP server. Connect from Claude Desktop,
-Claude Code, or any MCP-compatible client.
+## 🌟 What is Multiplist?
 
-**Endpoint:** `https://multiplist.ai/mcp`
-**Transport:** StreamableHTTP + OAuth 2.1 with PKCE
+Your AI conversations are high-density intellectual property. Most memory tools save flat markdown text or generic summaries. Multiplist treats your thinking as structured capital:
 
-### Claude Desktop
+1. **8 Canonical Categories of Meaning:** Automatically mines conversations for decisions, frameworks, golden passages, definitions, actions, questions, offers, and emergence.
+2. **Exact Provenance:** Every claim, decision, and model traces back to exact line and character boundaries in your source conversations (`[Seed <uuid>]`).
+3. **Continuous Workspaces:** Tactile Bento containers, studio desks, 5-lane progression boards (`📥 Intake` ➔ `⚡ Doing` ➔ `⏸️ Needs Context` ➔ `👁️ Review` ➔ `🚢 Shipped`), and card graduation.
+4. **Sovereign Local Silicon:** Free BYOK integration for local Ollama models (`list_local_models`, `query_local_model`) at $0 third-party compute.
+5. **Zero Data Custody:** Transcripts and extractions write directly into your private Multiplist vault.
 
-Add to your `claude_desktop_config.json`:
+---
+
+## 🚀 Quickstart
+
+### 1. Claude Desktop (stdio Proxy)
+
+Add Multiplist to your `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "multiplist": {
       "command": "npx",
-      "args": ["-y", "@multiplist/mcp-server"],
+      "args": ["-y", "@multiplist/mcp-server@latest"],
       "env": {
-        "MULTIPLIST_API_KEY": "your-key-here"
+        "MULTIPLIST_MCP_TOKEN": "mcp_live_YOUR_TOKEN_HERE"
       }
     }
   }
 }
 ```
 
-Or connect directly via the hosted endpoint:
+> 🔑 **Get your MCP Token:** Log in to [multiplist.ai](https://multiplist.ai) ➔ **Settings** ➔ **MCP Tokens** ➔ Generate a live token (prefix `mcp_live_`).
+
+### 2. Direct Hosted StreamableHTTP
+
+For remote agents or clients supporting StreamableHTTP:
 
 ```json
 {
   "mcpServers": {
     "multiplist": {
-      "type": "streamable-http",
-      "url": "https://multiplist.ai/mcp"
+      "url": "https://multiplist.ai/mcp",
+      "headers": {
+        "x-mcp-key": "mcp_live_YOUR_TOKEN_HERE"
+      }
     }
   }
 }
 ```
 
-## 19 Curated Tools
+---
 
-| Category | Tools | What They Do |
-|----------|-------|--------------|
-| **Capture** | create_source, update_source, delete_source | Save conversations to your vault |
-| **Extraction** | trigger_extraction, batch_extract, batch_status | Extract structured meaning |
-| **Custom Skills** | create_skill, list_skills, get_skill, match_skills | Define domain-specific extraction |
-| **Discovery** | get_source, search_vault, search_sources, get_vault_summary, get_vault_gaps | Search and retrieve with citations |
-| **Research** | request_brief, get_brief_status | Synthesize across your vault |
-| **Annotate** | add_annotation, add_marginalia | Write corrections and evolution notes |
+## 🛠️ 75 Canonical Tools Across 5 Tiers
 
-## What Multiplist Extracts
+Multiplist features progressive tool disclosure matching your provisioned workspace tier:
 
-Nine categories of structured meaning from any conversation or document:
+| Tier | Price | Tools | Capabilities |
+| :--- | :--- | :--- | :--- |
+| **Core** | Free / BYOK | **12** | Single-source capture, extraction, epistemic search, discovery, local silicon |
+| **Plus** | $19/mo | **48** | Bento workspaces, studios, decks, lanes, cards, folders, custom skills, marginalia |
+| **Pro** | $49/mo | **6** | Autonomous agent runways, desk state, autonomy audit logs, production deliverables |
+| **Realm** | $149/mo | **5** | Sovereign realm mesh, cross-realm sharing, domain isolation |
+| **Admin** | Internal | **4** | Diagnostic cluster, tree pruning, metadata repair, direct SQL triage |
 
-- **Decisions** — commitments, with reasoning
-- **Frameworks** — named models and structured approaches
-- **Actions** — next steps, with ownership
-- **Questions** — open threads and unresolved tensions
-- **Definitions** — terms with precise meaning in context
-- **Emergence** — new concepts forming in real time
-- **Golden Passages** — language worth preserving verbatim
-- **Exemplars** — concrete examples worth referencing later
-- **Offers** — AI suggestions and proposed next steps
+### 🟢 Core Tools (12 Free / BYOK)
+- `create_source`: Save a conversation, document, or transcript to the vault with automatic extraction.
+- `update_source`: Append or update saved conversations with incremental extraction.
+- `delete_source`: Soft-delete a source while preserving extracted seed provenance.
+- `trigger_extraction`: Run single-source extraction across the 8 canonical categories.
+- `get_source`: Retrieve a complete source with its abstract, seeds, and character citations.
+- `search_vault`: Semantic recall for extracted seeds across all conversations.
+- `search_sources`: Browse the catalog of sources by title, date, or keyword.
+- `get_vault_summary`: Vault-wide overview of sources, seed counts, and category clusters.
+- `get_vault_gaps`: Surface unextracted areas, sparse categories, and missing knowledge.
+- `get_capabilities`: Session orientation and progressive disclosure introspection.
+- `list_local_models`: Discover locally available Ollama models at $0 compute.
+- `query_local_model`: Execute zero-cost local LLM inference against local models.
 
-Each seed traces back to exact character positions in the original source.
+### 🔵 Plus Tools (48 Workspace Tools)
+- **Spatial Workstations:** `compose_workspace`, `resolve_workspace`, `list_containers`, `create_container`, `update_container`, `delete_container`, `get_container`, `get_container_structure`, `get_container_stats`
+- **Studios & Pins:** `list_studios`, `create_studio`, `update_studio`, `delete_studio`, `get_deck_state`, `pin_source`, `unpin_source`, `list_pins`
+- **Decks, Lanes & Cards:** `list_lanes`, `create_lane`, `update_lane`, `delete_lane`, `get_lane_contents`, `list_cards`, `get_card`, `create_card`, `update_card`, `move_card`, `delete_card`, `graduate_card`
+- **Research & Folders:** `request_brief`, `get_brief_status`, `create_vault_folder`, `delete_vault_folder`, `rename_vault_folder`, `add_sources_to_folder`, `remove_source_from_folder`, `batch_extract`, `batch_status`
+- **Custom Domain Skills:** `create_skill`, `list_skills`, `get_skill`, `match_skills`, `update_skill`, `delete_skill`
+- **Living Marginalia & Assets:** `add_annotation`, `add_marginalia`, `list_source_assets`, `rescue_excerpt`
 
-## Custom Extraction Skills
+### 🟣 Pro Tools (6 Autonomy Tools)
+- `scaffold_agent_runway`: Scaffold autonomous agent runways and 5-lane pipelines in a studio.
+- `get_desk_state`: Inspect active desk cards, agent configs, and tool bouquets.
+- `query_agent_log`: Audit autonomous agent execution history and tool invocations.
+- `list_production_skills`: Discover Assemblist production deliverable templates.
+- `produce_deliverable`: Generate holographic capsules, executive briefs, and deliverables.
+- `get_context`: Fetch full context capsule snapshots for high-reasoning tasks.
 
-The differentiator: you define what matters in your domain.
+### 🌐 Realm Tools (5 Mesh Tools)
+- `list_realms`, `get_current_realm`, `switch_realm`, `share_source_to_realm`, `move_source_to_realm`: Sovereign domain isolation and zero-token cross-vault asset sharing.
 
-A coach creates a "Client Breakthroughs" skill.
-A developer creates an "Architecture Signals" skill.
-A researcher creates a "Research Distillation" skill.
+---
 
-Skills tell Multiplist what to look for in your specific content type.
-The vault learns the shape of your work.
+## 🧬 Provenance & 8 Canonical Categories
 
-## Get Started
+When you save content, Multiplist extracts 8 canonical categories:
+- **Decisions:** Commitments made, positions locked, rationale cited.
+- **Frameworks:** Mental models, named structures, repeatable systems.
+- **Golden Passages:** Key quotes and phrasing worth preserving verbatim.
+- **Definitions:** Terminology and domain definitions established in context.
+- **Actions:** Concrete deliverables and commitments with owners.
+- **Questions:** Unresolved inquiry vectors and deliberate open loops.
+- **Offers:** High-leverage candidate actions and propositions.
+- **Emergence:** Nascent concepts forming in dialogue.
 
-1. Sign up at [multiplist.ai](https://multiplist.ai)
-2. Generate an API key in Settings
-3. Connect via MCP (see above)
-4. Say "save this conversation to my vault"
+---
 
-## Skills Library
+## 📜 Public Discovery & Directory Specifications
 
-See [github.com/multiplist/skills](https://github.com/multiplist/skills)
-for pre-built skills and the Seed Doc Renderer, Archivist Research,
-and Custom Extraction Skills integrations.
+- **Hosted Server Card:** `https://multiplist.ai/.well-known/mcp/server-card.json`
+- **Glama Manifest:** `glama.json` (root)
+- **MCP Registry Manifest:** `server.json` (root)
+- **Smithery Registry:** `@multiplist/mcp-server`
 
-## License
+---
 
-MIT — [multiplist.ai](https://multiplist.ai)
+## 📄 License
+
+MIT © [Multiplist](https://multiplist.ai) & Mystic Quarterly
