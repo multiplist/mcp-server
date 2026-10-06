@@ -1,0 +1,21 @@
+# Smithery MCP Server Configuration
+# https://smithery.ai/docs
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - multiplistMcpToken
+    properties:
+      multiplistMcpToken:
+        type: string
+        title: "Multiplist MCP Token"
+        description: "Your sovereign Multiplist MCP token from https://multiplist.ai/settings (starts with mcp_live_)"
+  commandFunction: |-
+    (config) => ({
+      command: "node",
+      args: ["dist/index.js"],
+      env: {
+        MULTIPLIST_MCP_TOKEN: config.multiplistMcpToken
+      }
+    })
