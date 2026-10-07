@@ -29,6 +29,7 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import "dotenv/config";
+import { createShutdown } from "./shutdown.js";
 
 const mcpToken =
   process.env.MULTIPLIST_MCP_TOKEN ||
@@ -86,6 +87,22 @@ async function main(): Promise<void> {
   });
 
   const stdio = new StdioServerTransport();
+  const pendingSends = new Set<Promise<void>>();
+  let shuttingDown = false;
+  const finishShutdown = createShutdown({
+    remote, stdio,
+    drain: () => Promise.allSettled([...pendingSends]),
+    log: (message) => process.stderr.write(message),
+    exit: (code) => process.exit(code),
+  });
+  const shutdown = (exitCode = 0): Promise<void> => {
+    shuttingDown = true;
+    return finishShutdown(exitCode);
+  };
+  // The SDK's stdio transport does not emit onclose on stdin EOF.
+  process.stdin.once("end", () => { void shutdown(); });
+  process.on("SIGINT", () => { void shutdown(); });
+  process.on("SIGTERM", () => { void shutdown(); });
 
   remote.onmessage = (message) => {
     stdio.send(message).catch((err) => {
@@ -95,28 +112,32 @@ async function main(): Promise<void> {
     });
   };
   remote.onerror = (err) => {
+    if (shuttingDown) return; // Shutdown reports a privacy-safe failure summary.
     process.stderr.write(
       `[multiplist-mcp] remote error: ${String(err)}\n`,
     );
   };
   remote.onclose = () => {
     process.stderr.write("[multiplist-mcp] remote closed\n");
-    process.exit(0);
+    void shutdown();
   };
 
   stdio.onmessage = (message) => {
-    remote.send(message).catch((err) => {
+    if (shuttingDown) return;
+    const send = remote.send(message).catch((err) => {
+      if (shuttingDown) return;
       process.stderr.write(
         `[multiplist-mcp] remote send error: ${String(err)}\n`,
       );
     });
+    pendingSends.add(send);
+    void send.finally(() => pendingSends.delete(send));
   };
   stdio.onerror = (err) => {
     process.stderr.write(`[multiplist-mcp] stdio error: ${String(err)}\n`);
   };
   stdio.onclose = () => {
-    remote.close().catch(() => {});
-    process.exit(0);
+    void shutdown();
   };
 
   try {
@@ -135,15 +156,8 @@ async function main(): Promise<void> {
     } else {
       process.stderr.write(`[multiplist-mcp] failed to connect: ${msg}\n`);
     }
-    process.exit(1);
+    await shutdown(1);
   }
-
-  const shutdown = async (): Promise<void> => {
-    await remote.close().catch(() => {});
-    process.exit(0);
-  };
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
 }
 
 main().catch((err) => {
