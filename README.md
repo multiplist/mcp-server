@@ -161,3 +161,20 @@ When you save content, Multiplist extracts 8 canonical categories:
 ## 📄 License
 
 MIT © [Multiplist](https://multiplist.ai) & Mystic Quarterly
+
+
+### Session cleanup
+
+On stdin EOF, SIGINT, or SIGTERM, the bridge stops accepting messages, waits for
+already dispatched requests (including initialization), and requests authenticated
+session termination before closing its transports. Repeated shutdown events share
+one shutdown operation. Draining and termination have a combined 3-second deadline;
+local transport closure has a further 1-second deadline.
+
+A failed or timed-out termination produces a short stderr warning and the process
+still exits. Capacity is only released if the host accepts termination. Unsupported
+DELETE responses, lost responses, forced process kills, and network failures can
+leave a session for the host's existing retention/reaping policy. The bridge does
+not change that policy or the host's security limits.
+
+Run `npm test` for the build and loopback-only shutdown/capacity regression suite.
