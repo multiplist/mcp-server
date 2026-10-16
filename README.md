@@ -108,6 +108,24 @@ Multiplist features progressive tool disclosure matching your provisioned worksp
 
 ---
 
+## 🛍️ Store Ops Copilot for Shopify (8-Tool Commerce Satellite)
+
+Alongside the 71 core vault and workspace tools, Multiplist provides a standalone, zero-custody **Shopify Store Ops Copilot** MCP satellite (`satellites/shopify-ops`) targeting Shopify Admin GraphQL API `2025-01` across 4 pre-cached subscription tier bundles (`core`, `support`, `operations`, `enterprise`):
+
+| # | Tool Name | Tier Bundle | Description |
+| :--- | :--- | :--- | :--- |
+| **1** | `get_order` | `core` | Instant WISMO resolution: fulfillment status, line items, and carrier tracking links (USPS, UPS, FedEx, DHL). |
+| **2** | `get_inventory_levels` | `core` | Real-time `available` and `on_hand` inventory quantities across all warehouse and retail locations. |
+| **3** | `list_customers` | `support` | Customer search, LTV band (`VIP`, `High Value`, `Repeat`, `First-Time`), non-custodial `multiplist` metafields, and 3-sentence relationship summary. |
+| **4** | `create_discount` | `support` | Single-use percentage or fixed-amount customer appeasement coupon generator (`CARE-15-XXXX`). |
+| **5** | `cancel_or_refund_order` | `operations` | Resolves human order number (`#1001`), checks cancellation state, and executes `orderCancel` with refund and restock automation. |
+| **6** | `update_inventory_quantity` | `operations` | Resolves SKU/title and warehouse location GID, applying signed inventory deltas (`+25` restock, `-2` damaged) with audit reasons. |
+| **7** | `create_draft_order` | `enterprise` | Builds custom draft orders with line items and bespoke discounts, returning a direct `invoiceUrl` checkout link. |
+| **8** | `sync_customer_metafield` | `enterprise` | Writes persistent customer relationship summaries and VIP notes directly into native Shopify customer metafields (`multiplist` namespace) with zero third-party data custody. |
+
+---
+
+
 ## 💬 18 Interactive MCP Prompts
 
 Multiplist exports 18 interactive prompt templates with typed arguments for 1-click execution in Claude Desktop, Cursor, and any MCP host:
