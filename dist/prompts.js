@@ -225,7 +225,7 @@ export const PUBLIC_PROMPTS = [
     {
         name: "query-local-model",
         category: "local_silicon",
-        description: "Execute private local inference directly on host Apple Silicon or local GPU via Ollama at $0.00 compute cost.",
+        description: "Execute inference on a local language model via the configured local inference runtime.",
         arguments: [
             {
                 name: "prompt",

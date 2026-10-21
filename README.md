@@ -96,7 +96,7 @@ Multiplist features progressive tool disclosure matching your provisioned worksp
 - **Living Marginalia & Assets:** `add_annotation`, `add_marginalia`, `list_source_assets`, `rescue_excerpt`
 
 ### 🟣 Pro Tools (6 Autonomy Tools)
-- `scaffold_agent_runway`: Scaffold autonomous agent runways and 5-lane pipelines in a studio.
+- `create_default_studio_lanes`: Create standard workflow lanes (Intake, Doing, Needs Context, Review, Shipped) for a studio workspace. Idempotent — will not duplicate existing lanes.
 - `get_desk_state`: Inspect active desk cards, agent configs, and tool bouquets.
 - `query_agent_log`: Audit autonomous agent execution history and tool invocations.
 - `list_production_skills`: Discover Assemblist production deliverable templates.
@@ -131,7 +131,7 @@ Multiplist exports 18 interactive prompt templates with typed arguments for 1-cl
 | | `/desk-orientation` | `studio` (req) | Inspect desk state, resident agent, tool bouquet & active cards |
 | | `/scaffold-runway` | `studio` (req) | Scaffold canonical 5-lane agent runway for a studio |
 | **Marginalia** | `/add-marginalia` | `source`, `note` (req) | Attach commentary, corrections, or tension flags with scribe provenance |
-| **Local Silicon** | `/query-local-model` | `prompt` (req), `model?` | Run zero-cost local inference on Apple Silicon via Ollama |
+| **Local Silicon** | `/query-local-model` | `prompt` (req), `model?` | Execute inference on a local language model via the configured local inference runtime |
 
 ---
 

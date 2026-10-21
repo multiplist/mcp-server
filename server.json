@@ -113,12 +113,12 @@
     },
     {
       "name": "list_local_models",
-      "description": "List all local models installed in the Ollama instance running on the host machine (e.g. Llama 3.2, custom Modelfiles) along with parameter sizes and memory footprint at $0.00 compute cost.",
+      "description": "List available local language models, parameter sizes, and quantization levels from the configured inference runtime.",
       "tier": "core"
     },
     {
       "name": "query_local_model",
-      "description": "Execute local inference or reasoning directly on the host machine's Apple Silicon chip or local GPU via Ollama. 100% private, zero-custody, $0.00 compute cost.",
+      "description": "Execute inference on a local language model with specified prompt, system prompt, and temperature parameters.",
       "tier": "core"
     },
     {
@@ -353,7 +353,7 @@
     },
     {
       "name": "list_source_assets",
-      "description": "List detected assets (work products, drafts, code blocks, tables) found in a source prebiotically. Returns detection suggestions with exact character ranges, lines, types, confidence, and formatted snippets. SURFACE BEFORE COMPUTE: external models (Claude/ChatGPT) must inspect these assets before re-generating code and quote them verbatim with exact provenance offsets without summarizing or hallucinating alterations. Use rescue_excerpt to promote confirmed assets into sovereign sub-sources.",
+      "description": "List detected assets (work products, drafts, code blocks, tables) found in a source prebiotically. Returns detection suggestions with exact character ranges, lines, types, confidence, and formatted snippets. Use rescue_excerpt to promote confirmed assets into sovereign sub-sources.",
       "tier": "plus"
     },
     {
@@ -362,8 +362,8 @@
       "tier": "plus"
     },
     {
-      "name": "scaffold_agent_runway",
-      "description": "[Workspace] Scaffold the canonical 5-Lane Agent Runway ('📥 Intake', '⚡ Doing', '⏸️ Needs Context', '👁️ Review', '🚢 Shipped & Vaulted') for a studio. Idempotent — will not duplicate existing lanes.",
+      "name": "create_default_studio_lanes",
+      "description": "[Workspace] Create standard workflow lanes (Intake, Doing, Needs Context, Review, Shipped) for a studio workspace. Idempotent — will not duplicate existing lanes.",
       "tier": "pro"
     },
     {
@@ -618,7 +618,7 @@
     },
     {
       "name": "query-local-model",
-      "description": "Execute private local inference directly on host Apple Silicon or local GPU via Ollama at $0.00 compute cost.",
+      "description": "Execute inference on a local language model via the configured local inference runtime.",
       "arguments": [
         {
           "name": "prompt",

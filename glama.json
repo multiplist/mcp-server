@@ -81,7 +81,7 @@
     "add_marginalia",
     "list_source_assets",
     "rescue_excerpt",
-    "scaffold_agent_runway",
+    "create_default_studio_lanes",
     "get_desk_state",
     "query_agent_log",
     "list_production_skills",
