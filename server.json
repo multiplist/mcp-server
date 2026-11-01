@@ -88,12 +88,12 @@
     },
     {
       "name": "search_vault",
-      "description": "Find seeds across your entire vault by semantic query. Use this when you want extracted meaning — decisions, frameworks, golden passages, or skill-defined categories like \"Product Moves\" — regardless of which source they came from. The category filter accepts the 8 canonical categories AND any skill-defined category name; it matches both the stored form (product_moves) and the human-readable form (Product Moves). Not for finding whole sources — use \\search_sources\\ for that, or \\get_source\\ to open one you already know.",
+      "description": "Find seeds across your entire vault by semantic query. Use this when you want extracted meaning — decisions, frameworks, golden passages, or skill-defined categories like \"Product Moves\" — regardless of which source they came from. The category filter accepts the 8 canonical categories AND any skill-defined category name; it matches both the stored form (product_moves) and the human-readable form (Product Moves). Not for finding whole sources — use 'search_sources' for that, or 'get_source' to open one you already know.",
       "tier": "core"
     },
     {
       "name": "search_sources",
-      "description": "Find sources (whole conversations/documents) by title, date, type, or keyword — the card catalog of your vault. Use this when you want to locate documents, not the meaning inside them. Not for retrieving extracted seeds — use \\search_vault\\ to query seeds across sources, or \\get_source\\ once you know which source you want.",
+      "description": "Find sources (whole conversations/documents) by title, date, type, or keyword — the card catalog of your vault. Use this when you want to locate documents, not the meaning inside them. Not for retrieving extracted seeds — use search_vault to query seeds across sources, or get_source once you know which source you want.",
       "tier": "core"
     },
     {
