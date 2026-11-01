@@ -16,7 +16,7 @@ Your AI conversations are high-density intellectual property. Most memory tools 
 1. **8 Canonical Categories of Meaning:** Automatically mines conversations for decisions, frameworks, golden passages, definitions, actions, questions, offers, and emergence.
 2. **Exact Provenance:** Every claim, decision, and model traces back to exact line and character boundaries in your source conversations (`[Seed <uuid>]`).
 3. **Continuous Workspaces:** Tactile Bento containers, studio desks, 5-lane progression boards (`📥 Intake` ➔ `⚡ Doing` ➔ `⏸️ Needs Context` ➔ `👁️ Review` ➔ `🚢 Shipped`), and card graduation.
-4. **Sovereign Local Silicon:** Free BYOK integration for local Ollama models (`list_local_models`, `query_local_model`) at $0 third-party compute.
+4. **The Shared Office for Human and AI:** Continuous workspace coordination (Bento studios, decks, and cards) that connects chat decisions to real-world project tracking.
 5. **Zero Data Custody:** Transcripts and extractions write directly into your private Multiplist vault.
 
 ---
@@ -68,7 +68,7 @@ Multiplist features progressive tool disclosure matching your provisioned worksp
 
 | Tier | Price | Tools | Capabilities |
 | :--- | :--- | :--- | :--- |
-| **Core** | Free / BYOK | **12** | Single-source capture, extraction, epistemic search, discovery, local silicon |
+| **Core** | Free | **12** | Single-source capture, verbatim extraction, epistemic search, and discovery |
 | **Plus** | $19/mo | **48** | Bento workspaces, studios, decks, lanes, cards, folders, custom skills, marginalia |
 | **Pro** | $49/mo | **6** | Autonomous agent runways, desk state, autonomy audit logs, production deliverables |
 | **Realm** | $149/mo | **5** | Sovereign realm mesh, cross-realm sharing, domain isolation |
