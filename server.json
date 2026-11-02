@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "ai.multiplist/mcp-server",
   "title": "Multiplist",
-  "description": "Your portable, quotable memory vault for every AI you work with. Automatically extracts decisions, frameworks, and insights with character-level provenance, with continuous workspace coordination (Bento studios, decks, lanes, and cards).",
+  "description": "Portable AI Memory Vault & Workspace: extract decisions, frameworks, and insights with citations.",
   "version": "1.1.1",
   "websiteUrl": "https://multiplist.ai",
   "repository": {
