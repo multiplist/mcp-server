@@ -1,6 +1,6 @@
 # @multiplist/mcp-server
 
-> **Sovereign AI Conversation Vault, 8-Category Epistemic Extraction & Continuous Workspaces**  
+> **Portable AI Memory Vault & Workspace**  
 > Connect Claude Desktop, Claude Code, Cursor, Antigravity IDE, and frontier LLMs directly to your private Multiplist brain.
 
 [![npm version](https://img.shields.io/npm/v/@multiplist/mcp-server.svg)](https://www.npmjs.com/package/@multiplist/mcp-server)

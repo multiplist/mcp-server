@@ -1,8 +1,8 @@
 {
   "name": "@multiplist/mcp-server",
   "mcpName": "ai.multiplist/mcp-server",
-  "version": "1.1.0",
-  "description": "IP Vault with Citations — extract decisions, frameworks, and insights from AI conversations with full provenance.",
+  "version": "1.1.1",
+  "description": "Portable AI Memory Vault & Workspace — extract decisions, frameworks, and insights from AI conversations with full provenance.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

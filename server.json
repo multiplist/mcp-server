@@ -3,7 +3,7 @@
   "name": "ai.multiplist/mcp-server",
   "title": "Multiplist",
   "description": "Your portable, quotable memory vault for every AI you work with. Automatically extracts decisions, frameworks, and insights with character-level provenance, with continuous workspace coordination (Bento studios, decks, lanes, and cards).",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "websiteUrl": "https://multiplist.ai",
   "repository": {
     "url": "https://github.com/multiplist/mcp-server",
@@ -14,7 +14,7 @@
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@multiplist/mcp-server",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "runtimeHint": "npx",
       "transport": {
         "type": "stdio"
@@ -419,7 +419,7 @@
   ],
   "_meta": {
     "io.modelcontextprotocol.registry/publisher-provided": {
-      "tagline": "Sovereign AI Conversation Vault & Continuous Workspaces",
+      "tagline": "Portable AI Memory Vault & Workspace",
       "homepage": "https://multiplist.ai",
       "docs": "https://multiplist.ai/docs/mcp",
       "tool_count": 71,
