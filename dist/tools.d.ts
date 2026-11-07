@@ -1,5 +1,5 @@
 /**
- * Public MCP tool manifest — 71 canonical tools across 4 tiers.
+ * Public MCP tool manifest — 73 canonical tools across 4 tiers.
  *
  * Canonical manifest of tools exposed across Core, Plus, Pro, and Realm tiers.
  * Full schemas + handlers live on the hosted server; this manifest is here for
